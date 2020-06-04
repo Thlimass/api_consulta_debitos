@@ -1,4 +1,4 @@
-const mock = [
+const carsListMock = [
     {
         "status": true,
         "result": {
@@ -104,11 +104,14 @@ const mock = [
 
 module.exports = new class Database {
     constructor(Car) {
-        this.Car = mock
+        this.Car = carsListMock
     }
 
     find() {
-        return mock
+        return carsListMock
     };
 
+    findByPlateNumber(plateNumber) {
+        return carsListMock.filter(carro => carro.result.veiculo.placa === plateNumber)
+    }
 }

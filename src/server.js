@@ -6,7 +6,8 @@ const app = express();
 const port = process.env.PORT || 4001;
 app.use(bodyParser.json());
 
-app.get('/',controller.get);
+app.get('/cars',controller.get);
+app.get('/car/:placa',controller.getByPlateNumber);
 
 //Iniciando o servidor.
 app.listen(port, function () {

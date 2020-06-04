@@ -23,3 +23,11 @@ exports.get = (req, res ) => {
     });
 
 };
+
+
+exports.getByPlateNumber = (req, res) => {
+    CarRepository.getByPlateNumber(req.params.placa)
+        .then((car) => {
+            res.status(200).send(car);
+        }).catch(err => res.status(500).send(err))
+};

@@ -8,4 +8,8 @@ module.exports = new class CarRepository {
         return Database.find();
     }
 
+    async getByPlateNumber(plateNumber) {
+        return Database.findByPlateNumber(plateNumber);
+    }
+
 }
