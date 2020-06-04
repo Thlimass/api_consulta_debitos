@@ -49,5 +49,12 @@ const mock = {
     }
 
 }
+module.exports = new class Database {
+    constructor(Car) {
+        this.Car = mock
+    }
 
-module.exports = mock;
+    find() {
+        return mock
+    }
+}
