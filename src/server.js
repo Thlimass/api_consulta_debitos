@@ -58,11 +58,11 @@ const result = {
 
 app.use(bodyParser.json());
 
-app.post('/testando', function (req, res) {
-    console.log(`BODY TESTE: ${req.body}`)
+app.post('/car', function (req, res) {
 
     res.json(result)
 })
+
 
 
 //Iniciando o servidor.
