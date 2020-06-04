@@ -31,9 +31,14 @@ Para isso, execute o comando abaixo no seu terminal:
 $ docker run --name redis13 -p 6379:6379 -d redis redis-server --appendonly no
 ```
 
-### Para realizar um GET
+### Para realizar um GET de todos os carros:
 ```
-http://localhost:4001/
+http://localhost:4001/cars
+```
+### Para realizar um GET por placa:
+Substitua "placa" pelo valor(KXY7559) que você quer fazer a busca.
+```
+http://localhost:4001/car/"placa"
 ```
 ### Tecnologias
 * Node JS
