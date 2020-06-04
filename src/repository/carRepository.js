@@ -4,7 +4,7 @@ const Database = require('../database/carDatabaseMock');
 
 module.exports = new class CarRepository {
 
-    getAll() {
+    async getAll() {
         return Database.find();
     }
 

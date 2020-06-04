@@ -1,18 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const database = require('../src/database/carDatabaseMock');
+const controller = require('../src/controller/carController');
 
 const app = express();
 const port = process.env.PORT || 4000;
-
-
-
 app.use(bodyParser.json());
 
-app.post('/car', function (req, res) {
-
-    res.json(database.Car)
-})
+app.get('/',controller.get);
 
 //Iniciando o servidor.
 app.listen(port, function () {
