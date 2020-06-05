@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 
 app.get('/cars',controller.get);
 app.get('/car/:placa',controller.getByPlateNumber);
-app.get('/car/origem/:local', controller.getByPlaceOfOrigin);
+app.get('/car/origem/:local', controller.getByPlaceOfOriginAndParams);
 
 //Iniciando o servidor.
 app.listen(port, function () {

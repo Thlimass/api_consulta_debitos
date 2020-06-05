@@ -112,10 +112,13 @@ module.exports = new class Database {
     };
 
     findByPlateNumber(plateNumber) {
+
         return carsListMock.filter(carro => carro.result.veiculo.placa === plateNumber)
     }
 
-    findByPlaceOfOrigin(place) {
-        return carsListMock.filter(carro => carro.result.multas[0].local === place)
+    findByPlaceOfOriginAndParams(place, placa, renavam) {
+        return carsListMock.filter(carro => carro.result.multas[0].local === place
+            && carro.result.veiculo.placa === placa
+            && carro.result.veiculo.renavam === renavam)
     }
 }

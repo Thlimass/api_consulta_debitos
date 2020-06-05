@@ -39,16 +39,18 @@ exports.getByPlateNumber = (req, res) => {
             CarRepository.getByPlateNumber(req.params.placa)
                 .then((car) => {
                     client.set('car', JSON.stringify(car));
-                    client.expire('car', 4000);
+                    client.expire('car', 60);
                     res.status(200).send(car);
                 }).catch(err => res.status(500).send(err))
         }
     });
 
 };
+exports.getByPlaceOfOriginAndParams =(req, res) => {
+    const placaParam = req.query.placa
+    const renavamParam = req.query.renavam
 
-exports.getByPlaceOfOrigin =(req, res) => {
-    CarRepository.getByPlaceOfOrigin(req.params.local)
+    CarRepository.getByPlaceOfOriginAndParams(req.params.local,renavamParam,placaParam)
         .then((car) => {
         res.status(200).send(car)
     }).catch(err => res.status(500).send(err));
