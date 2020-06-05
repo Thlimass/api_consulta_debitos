@@ -22,7 +22,7 @@ const carsListMock = [
                     "data_infracao": "não disponível",
                     "hora_infracao": "não disponível",
                     "descricao": "não disponível",
-                    "local": "não disponível",
+                    "local": "RJ",
                     "orgao_emissor": "não disponível",
                     "agente_emissor": "não disponível"
                 }
@@ -72,7 +72,7 @@ const carsListMock = [
                     "data_infracao": "não disponível",
                     "hora_infracao": "não disponível",
                     "descricao": "não disponível",
-                    "local": "não disponível",
+                    "local": "SP",
                     "orgao_emissor": "não disponível",
                     "agente_emissor": "não disponível"
                 }
@@ -113,5 +113,9 @@ module.exports = new class Database {
 
     findByPlateNumber(plateNumber) {
         return carsListMock.filter(carro => carro.result.veiculo.placa === plateNumber)
+    }
+
+    findByPlaceOfOrigin(place) {
+        return carsListMock.filter(carro => carro.result.multas[0].local === place)
     }
 }

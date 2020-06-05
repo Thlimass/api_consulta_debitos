@@ -12,4 +12,8 @@ module.exports = new class CarRepository {
         return Database.findByPlateNumber(plateNumber);
     }
 
+    async getByPlaceOfOrigin(place) {
+        return Database.findByPlaceOfOrigin(place);
+    }
+
 }

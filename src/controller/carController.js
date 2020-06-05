@@ -17,7 +17,7 @@ exports.get = (req, res) => {
             CarRepository.getAll()
                 .then((cars) => {
                     client.set('allCars', JSON.stringify(cars));
-                    client.expire('allCars', 5);
+                    client.expire('allCars', 4000);
                     res.status(200).send(cars)
                 }).catch(err => res.status(500).send(err));
         }
@@ -39,10 +39,20 @@ exports.getByPlateNumber = (req, res) => {
             CarRepository.getByPlateNumber(req.params.placa)
                 .then((car) => {
                     client.set('car', JSON.stringify(car));
-                    client.expire('car', 5);
+                    client.expire('car', 4000);
                     res.status(200).send(car);
                 }).catch(err => res.status(500).send(err))
         }
     });
 
 };
+
+exports.getByPlaceOfOrigin =(req, res) => {
+    CarRepository.getByPlaceOfOrigin(req.params.local)
+        .then((car) => {
+        res.status(200).send(car)
+    }).catch(err => res.status(500).send(err));
+};
+
+//TODO Revisar a camada de Cache quando tiver os 3 campos.
+//TODO Persistir a memória no Redis.
