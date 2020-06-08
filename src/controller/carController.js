@@ -7,9 +7,9 @@ const client = redis.createClient();
 
 exports.get = (req, res) => {
 
-    client.get('allCars', function (err, reply) {
-        if (reply) {
-            const allCars = JSON.parse(reply)
+    client.get('allCars', function (err, carCached) {
+        if (carCached) {
+            const allCars = JSON.parse(carCached)
             console.log('redis');
             res.send(allCars)
         } else {
@@ -50,10 +50,11 @@ exports.getByPlaceOfOriginAndParams =(req, res) => {
     const placaParam = req.query.placa
     const renavamParam = req.query.renavam
 
-    CarRepository.getByPlaceOfOriginAndParams(req.params.local,renavamParam,placaParam)
+    CarRepository.getByPlaceOfOriginAndParams(req.params.local,placaParam,renavamParam)
         .then((car) => {
-        res.status(200).send(car)
-    }).catch(err => res.status(500).send(err));
+            console.log(car)
+            res.status(200).send(car)
+        }).catch(err => res.status(500).send(err));
 };
 
 //TODO Revisar a camada de Cache quando tiver os 3 campos.

@@ -14,6 +14,7 @@ module.exports = new class CarRepository {
 
     async getByPlaceOfOriginAndParams(origin, placa, renavam) {
         return Database.findByPlaceOfOriginAndParams(origin,placa, renavam);
+
     }
 
 }
